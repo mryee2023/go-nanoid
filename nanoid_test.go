@@ -2,6 +2,7 @@
 package nanoid_test
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/jaevor/go-nanoid"
@@ -177,4 +178,13 @@ func BenchmarkASCIINanoID(b *testing.B) {
 	for n := 0; n < b.N; n++ {
 		f()
 	}
+}
+
+func TestEmoji(t *testing.T) {
+	g, e := nanoid.Standard(21)
+	assert.NoError(t, e)
+	for i := 0; i < 1000; i++ {
+		fmt.Println(g())
+	}
+
 }
